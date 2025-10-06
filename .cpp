@@ -1,191 +1,227 @@
-Skip to content
-Navigation Menu
-Fakeqq-fake
-para-number-1
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
 
-Type / to search
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-para-number-1
-/
-.cpp
-in
-main
+void task1() {
+    std::cout << "Task 1: Division of Two Numbers" << std::endl;
+    double num1, num2;
+    std::cout << "Enter first number: ";
+    std::cin >> num1;
+    std::cout << "Enter second number: ";
+    std::cin >> num2;
+    
+    if (num2 == 0) {
+        std::cout << "Error: division by zero!" << std::endl;
+    } else {
+        std::cout << "Division result: " << num1 / num2 << std::endl;
+    }
+}
 
-Edit
+void task2() {
+    std::cout << "Task 2: Check Three-Digit Even Number" << std::endl;
+    int number;
+    std::cout << "Enter a number: ";
+    std::cin >> number;
+    
+    if (number >= 100 && number <= 999) {
+        if (number % 2 == 0) {
+            std::cout << "Number " << number << " is three-digit and even" << std::endl;
+        } else {
+            std::cout << "Number " << number << " is three-digit but odd" << std::endl;
+        }
+    } else {
+        std::cout << "Number " << number << " is not three-digit" << std::endl;
+    }
+    std::cout << std::endl;
+}
 
-Preview
-Indent mode
+void task3() {
+    std::cout << "Task 3: Season and Days in Month" << std::endl;
+    int month;
+    std::cout << "Enter month number (1-12): ";
+    std::cin >> month;
+    
+    std::string season;
+    int days;
+    
+    switch (month) {
+        case 12: case 1: case 2:
+            season = "Winter";
+            break;
+        case 3: case 4: case 5:
+            season = "Spring";
+            break;
+        case 6: case 7: case 8:
+            season = "Summer";
+            break;
+        case 9: case 10: case 11:
+            season = "Autumn";
+            break;
+        default:
+            std::cout << "Error: invalid month number!" << std::endl;
+            return;
+    }
+    
+    switch (month) {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            days = 31;
+            break;
+        case 4: case 6: case 9: case 11:
+            days = 30;
+            break;
+        case 2:
+            days = 28;
+            break;
+    }
+    
+    std::cout << "Season: " << season << std::endl;
+    std::cout << "Number of days: " << days << std::endl;
+}
 
-Spaces
-Indent size
+void task4() {
+    std::cout << "=== Task 4: Calculator ===" << std::endl;
+    double num1, num2;
+    char operation;
+    
+    std::cout << "Enter first number: ";
+    std::cin >> num1;
+    std::cout << "Enter operator (+, -, *, /, %): ";
+    std::cin >> operation;
+    std::cout << "Enter second number: ";
+    std::cin >> num2;
+    
+    double result;
+    bool error = false;
+    
+    switch (operation) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            if (num2 == 0) {
+                std::cout << "Error: division by zero!" << std::endl;
+                error = true;
+            } else {
+                result = num1 / num2;
+            }
+            break;
+        case '%':
+            if (num2 == 0) {
+               std::cout << "Error: division by zero!" << std::endl;
+                error = true;
+            } else {
+                result = (int)num1 % (int)num2;
+            }
+            break;
+        default:
+            std::cout << "Error: invalid operator!" << std::endl;
+            error = true;
+            break;
+    }
+    
+    if (!error) {
+        std::cout << "Result: " << result << std::endl;
+    }
+}
 
-2
-Line wrap mode
+void task5() {
+    std::cout << "Task 5: Leap Year" << std::endl;
+    int year;
+    std::cout << "Enter year: ";
+    std::cin >> year;
+    
+    bool isLeap = false;
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        isLeap = true;
+        std::cout << year << " is a leap year" << std::endl;
+    } else {
+        std::cout << year << " is not a leap year" << std::endl;
+        
+     
+        int nextLeap = year + 1;
+        while (!((nextLeap % 4 == 0 && nextLeap % 100 != 0) || (nextLeap % 400 == 0))) {
+            nextLeap++;
+        }
+        std::cout << "Next leap year: " << nextLeap << std::endl;
+    }
+}
 
-No wrap
-Editing .cpp file contents
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229
-230
-231
-232
-233
-234
-235
-236
-void n_1() {
-
-void n_6() {
-    cout << "Task 6: Smart Home" << endl;
+void task6() {
+    std::cout << "Task 6: Smart Home" << std::endl;
     bool isDoorOpen;
     int time;
     
-    cout << "Is door open? (1 - yes, 0 - no): ";
-    cin >> isDoorOpen;
-    cout << "Enter time (0-23): ";
-    cin >> time;
+    std::cout << "Is door open? (1 - yes, 0 - no): ";
+    std::cin >> isDoorOpen;
+    std::cout << "Enter time (0-23): ";
+    std::cin >> time;
     
     if (time < 0 || time > 23) {
-        cout << "Error: invalid time!" << endl;
+        std::cout << "Error: invalid time!" << std::endl;
     } else {
         if (isDoorOpen) {
             if (time > 22 || time < 6) {
-                cout << "Alarm ON - alarm activated!" << endl;
+                std::cout << "Alarm ON - alarm activated!" << std::endl;
             } else {
-                cout << "Welcome!" << endl;
+                std::cout << "Welcome!" << std::endl;
             }
         } else {
-            cout << "Door closed, alarm deactivated" << endl;
+            std::cout << "Door closed, alarm deactivated" << std::endl;
         }
     }
-    cout << endl;
 }
 
-void n_7() {
-    cout << "Task 7: Rock, Paper, Scissors" << endl;
-    
- 
+void task7() {
+    std::cout << "Task 7: Rock, Paper, Scissors" << std::endl;     
     srand(time(0));
     
     int computerChoice = rand() % 3; 
     int userChoice;
     
-    cout << "Make your choice:" << endl;
-    cout << "0 - Rock" << endl;
-    cout << "1 - Scissors" << endl;
-    cout << "2 - Paper" << endl;
-    cout << "Your choice: ";
-    cin >> userChoice;
+    std::cout << "Make your choice:" << std::endl;
+    std::cout << "0 - Rock" << std::endl;
+    std::cout << "1 - Scissors" << std::endl;
+    std::cout << "2 - Paper" << std::endl;
+    std::cout << "Your choice: ";
+    std::cin >> userChoice;
     
     if (userChoice < 0 || userChoice > 2) {
-        cout << "Error: invalid choice!" << endl;
+        std::cout << "Error: invalid choice!" << std::endl;
         return;
     }
     
-    string choices[3] = {"Rock", "Scissors", "Paper"};
+    std::string choices[3] = {"Rock", "Scissors", "Paper"};
     
-    cout << "Your choice: " << choices[userChoice] << endl;
-    cout << "Computer's choice: " << choices[computerChoice] << endl;
+    std::cout << "Your choice: " << choices[userChoice] << std::endl;
+    std::cout << "Computer's choice: " << choices[computerChoice] << std::endl;
     
     if (userChoice == computerChoice) {
-        cout << "Draw!" << endl;
+        std::cout << "Draw!" << std::endl;
     } else if ((userChoice == 0 && computerChoice == 1) || 
                (userChoice == 1 && computerChoice == 2) || 
                (userChoice == 2 && computerChoice == 0)) {
-        cout << "You won!" << endl;
+        std::cout << "You won!" << std::endl;
     } else {
-        cout << "Computer won!" << endl;
+        std::cout << "Computer won!" << std::endl;
     }
-    cout << endl;
 }
 
 int main() {
    
-    n_1();
-    n_2();
-    n_3();
-    n_4();
-    n_5();
-    n_6();
-    n_7();
+    task1();
+    task2();
+    task3();
+    task4();
+    task5();
+    task6();
+    task7();
     
     return 0;
 }
-Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
-New File at / · Fakeqq-fake/para-number-1 
